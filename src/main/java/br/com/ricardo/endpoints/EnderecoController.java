@@ -22,14 +22,14 @@ public class EnderecoController {
 
 	@Autowired
 	private EnderecoService enderecoService;
-	
-	//insere um endereço
-		@PostMapping(produces = {MimeTypeUtils.APPLICATION_JSON_VALUE},
-				consumes = MimeTypeUtils.APPLICATION_JSON_VALUE)
-		public ResponseEntity<Endereco> insert(@RequestBody @Valid Endereco obj) {	
-			obj = enderecoService.insert(obj);
-			URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-					.buildAndExpand(obj.getId_endereco()).toUri();
-			return ResponseEntity.created(uri).body(obj);
-		}
+
+	// insere um endereço
+	@PostMapping(produces = { MimeTypeUtils.APPLICATION_JSON_VALUE }, consumes = MimeTypeUtils.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Endereco> insert(@RequestBody @Valid Endereco obj) {
+		obj = enderecoService.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId_endereco())
+				.toUri();
+		return ResponseEntity.created(uri).body(obj);
+	}
+
 }
